@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Script\CopyTransform.cs" />
      <Compile Include="Assets\Script\Lazer.cs" />
      <Compile Include="Assets\Script\PortalCamera.cs" />
      <Compile Include="Assets\Script\PortalTextureSetup.cs" />
@@ -63,31 +64,31 @@
      <Compile Include="Assets\Script\Shooting.cs" />
      <None Include="Assets\Material\CameraMap\ScreenCutoutShader.shader" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>D:/Unity/Tesaract/Tesaract/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>D:/Unity/Tesaract WOrk/Tesaract/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>D:/Unity/Tesaract/Tesaract/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>D:/Unity/Tesaract WOrk/Tesaract/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>D:/Unity/Tesaract/Tesaract/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>D:/Unity/Tesaract WOrk/Tesaract/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Unity/Tesaract/Tesaract/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Unity/Tesaract WOrk/Tesaract/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>D:/Unity/Tesaract/Tesaract/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>D:/Unity/Tesaract WOrk/Tesaract/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>D:/Unity/Tesaract/Tesaract/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>D:/Unity/Tesaract WOrk/Tesaract/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>D:/Unity/Tesaract/Tesaract/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>D:/Unity/Tesaract WOrk/Tesaract/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>D:/Unity/Tesaract/Tesaract/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>D:/Unity/Tesaract WOrk/Tesaract/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>D:/Unity/Tesaract/Tesaract/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>D:/Unity/Tesaract WOrk/Tesaract/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>D:/Unity/2019.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
