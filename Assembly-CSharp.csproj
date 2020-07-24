@@ -62,6 +62,7 @@
      <Compile Include="Assets\Script\RotateCube.cs" />
      <Compile Include="Assets\Script\Rotation.cs" />
      <Compile Include="Assets\Script\Shooting.cs" />
+     <Compile Include="Assets\Script\SwitchesCameras.cs" />
      <None Include="Assets\Material\CameraMap\ScreenCutoutShader.shader" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/Unity/Tesaract WOrk/Tesaract/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

@@ -11,7 +11,7 @@ public class CopyTransform : MonoBehaviour
     void Start()
     {
         offsets = new Vector3[clones.Length];
-        for (int i = 0; i <= clones.Length; i++)
+        for (int i = 0; i < clones.Length; i++)
         {
             offsets[i] = clones[i].position - transform.position;
         }
@@ -20,7 +20,7 @@ public class CopyTransform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i <= clones.Length; i++)
+        for (int i = 0; i < clones.Length; i++)
         {
             clones[i].position = offsets[i] + transform.position;
             clones[i].rotation = transform.rotation;
