@@ -1,0 +1,7 @@
+Tesaract/Assets/Material* filter=lfs diff=lfs merge=lfs -text
+Tesaract/Assets/prefub* filter=lfs diff=lfs merge=lfs -text
+Tesaract/Assets/Scenes* filter=lfs diff=lfs merge=lfs -text
+Tesaract/Assets/Warehouse* filter=lfs diff=lfs merge=lfs -text
+Tesaract/Assets/Standard[[:space:]]Assets* filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
