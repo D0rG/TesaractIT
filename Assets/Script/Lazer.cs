@@ -9,21 +9,23 @@ public class Lazer : MonoBehaviour
     public Transform back;
     public bool active;
     public float life=1000;
-    public Vector3 offset;
+    public Vector3 offsetLeft;
+    public Vector3 offsetRight;
     // Start is called before the first frame update
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("enter");
+        //Debug.Log("enter");
         if (other.tag == "bulletPortal")
         {
-            Debug.Log("portal");
+            //Debug.Log("portal");
             transform.parent = null;
-            transform.position = transform.position - offset;
+            transform.position = transform.position - offsetLeft;
+            GameObject trash = Instantiate(gameObject,transform.position -offsetRight,transform.rotation);
         }
         else if ((other.tag != "Lazer")&&(other.tag!= "Tesaract"))
         {
-            Debug.Log(other.tag);
+            //Debug.Log(other.tag);
             GameObject.Destroy(gameObject);
         }
     }

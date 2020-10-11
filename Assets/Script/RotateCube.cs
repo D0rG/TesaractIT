@@ -20,6 +20,7 @@ public class RotateCube : MonoBehaviour
     private Vector3 axisTwo;
     private Vector2 startMouse;//начальные координаты мыши
 
+    private bool startDown=false;
     // Start is called before the first frame update
     /*void Start()
     {
@@ -88,7 +89,30 @@ public class RotateCube : MonoBehaviour
             
         
     }
+
      
+    private void Update()
+    {
+        if ((Input.GetAxis("Horizontal")!=0)||(Input.GetAxis("Vertical")!=0))
+        {
+            if (!startDown)
+            {
+                startDown=true;
+                axisOne = new Vector3(cameraVector.position.x - cameraPos.position.x, cameraVector.position.y - cameraPos.position.y, cameraVector.position.z - cameraPos.position.z);//получить вектор исходящий из камеры
+                axisTwo = axisOne;//аналогично второму вектору
+                axisOne = new Vector3(axisOne.x, -axisOne.z, axisOne.y);// с помощью ЛИНАЛА находим новый вектор, вокруг которого будет вращаться объект
+                axisTwo = new Vector3( -axisTwo.z, axisTwo.y, axisTwo.x);// с помощью ЛИНАЛА находим новый другой вектор, вокруг которого будет вращаться объект@
+
+            }
+            foreach (Transform targetLook in targetsLooks)
+            {
+                            targetLook.RotateAround(targetLook.transform.position, axisOne, Input.GetAxis("Horizontal") * speedRotate);//вращать вокруг координат вращения, в зависимости от разницы текущего и стартового положения
+                            targetLook.RotateAround(targetLook.transform.position, -axisTwo, Input.GetAxis("Vertical")* speedRotate);
+            }
+        }
+
+        
+    }
    /* public void newTarget(Transform target)//процедура присвоение нвой цели для слежения
     {
         minDistance = 2;

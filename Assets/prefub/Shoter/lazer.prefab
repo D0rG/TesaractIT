@@ -62,7 +62,8 @@ MonoBehaviour:
   back: {fileID: 462261255877931983}
   active: 0
   life: 100
-  offset: {x: 200, y: 0, z: 0}
+  offsetLeft: {x: 200, y: 0, z: 0}
+  offsetRight: {x: 0, y: 0, z: -100}
 --- !u!23 &2126509859564213604
 MeshRenderer:
   m_ObjectHideFlags: 0
