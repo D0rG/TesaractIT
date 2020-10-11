@@ -5,3 +5,12 @@ Tesaract/Assets/Warehouse* filter=lfs diff=lfs merge=lfs -text
 Tesaract/Assets/Standard[[:space:]]Assets* filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
+Tesaract/Assets/HTC.UnityPlugin/* filter=lfs diff=lfs merge=lfs -text
+Tesaract/Assets/SteamVR/* filter=lfs diff=lfs merge=lfs -text
+Tesaract/Assets/SteamVR_Input/* filter=lfs diff=lfs merge=lfs -text
+Tesaract/Assets/SteamVR_Resources/* filter=lfs diff=lfs merge=lfs -text
+Tesaract/Assets/StreamingAssets/* filter=lfs diff=lfs merge=lfs -text
+Tesaract/Assets/Vive3DSP/* filter=lfs diff=lfs merge=lfs -text
+Tesaract/Assets/WaveVR/* filter=lfs diff=lfs merge=lfs -text
+Tesaract/Assets/XR/* filter=lfs diff=lfs merge=lfs -text
