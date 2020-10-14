@@ -111,8 +111,8 @@ public class RotateCube : MonoBehaviour
             }
             foreach (Transform targetLook in targetsLooks)
             {
-                            targetLook.RotateAround(targetLook.transform.position, axisTwo, Input.GetAxis("Horizontal") * speedRotate);//вращать вокруг координат вращения, в зависимости от разницы текущего и стартового положения
-                            targetLook.RotateAround(targetLook.transform.position, axisOne, Input.GetAxis("Vertical")* speedRotate);
+                            targetLook.RotateAround(targetLook.transform.position, new Vector3  (0,1,0), -Input.GetAxis("Horizontal") * speedRotate);//вращать вокруг координат вращения, в зависимости от разницы текущего и стартового положения
+                            targetLook.RotateAround(targetLook.transform.position, new Vector3(1, 0, 0), Input.GetAxis("Vertical")* speedRotate);
             }
         }
 

@@ -205,6 +205,7 @@
     <Compile Include="Assets\Script\ChangeMaterial.cs" />
     <Compile Include="Assets\Script\CopyTransform.cs" />
     <Compile Include="Assets\Script\Lazer.cs" />
+    <Compile Include="Assets\Script\LazerControll.cs" />
     <Compile Include="Assets\Script\PortalCamera.cs" />
     <Compile Include="Assets\Script\PortalTextureSetup.cs" />
     <Compile Include="Assets\Script\RotateCube.cs" />

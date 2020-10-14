@@ -28,9 +28,9 @@ public class PortalTextureSetup : MonoBehaviour
             if (cameras[i].stereoTargetEye == StereoTargetEyeMask.Left)
             {
 
-                camerasMats[i].SetFloat("_Add", 0.45f );
+                camerasMats[i].SetFloat("_Add", 0.05f );
             }
-            else camerasMats[i].SetFloat("_Add", 0.55f );
+            else camerasMats[i].SetFloat("_Add", -0.05f );
         }
     }
 
