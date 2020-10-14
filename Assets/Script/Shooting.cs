@@ -16,7 +16,7 @@ public class Shooting : MonoBehaviour
         Quaternion q = Quaternion.Euler(angle);
         GameObject trash = Instantiate(lazer, pointSpawn.position, q,room);
         trash.transform.LookAt(teleport);
-       // trash.transform.eulerAngles = angle + new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), Random.Range(-5, 5));
+        trash.transform.eulerAngles += new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
         //trash.transform.eulerAngles=angle;
         trash.GetComponent<Lazer>().number = 1;
         trash.GetComponent<Lazer>().active = true;

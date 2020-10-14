@@ -5,6 +5,8 @@ Shader "Unlit/ScreenCutoutShader"
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
+		_K ("Differents in size",float) = 0
+		_Add ("Add in center",float) = 0
 	}
 	SubShader
 	{
@@ -42,15 +44,19 @@ Shader "Unlit/ScreenCutoutShader"
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.screenPos = ComputeScreenPos(o.vertex);
+				
 				return o;
 			}
 			
 			sampler2D _MainTex;
+			uniform float _K;
+			uniform float _Add;
 
 			fixed4 frag (v2f i) : SV_Target
 			{
 				i.screenPos /= i.screenPos.w;
-				fixed4 col = tex2D(_MainTex, float2(i.screenPos.x, i.screenPos.y));
+				//fixed4 col = tex2D(_MainTex, float2((i.screenPos.x-_Add)*_K+_Add, i.screenPos.y));
+				fixed4 col = tex2D(_MainTex, float2((i.screenPos.x-_Add), i.screenPos.y));
 				
 				return col;
 			}
