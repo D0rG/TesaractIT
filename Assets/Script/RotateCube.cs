@@ -98,16 +98,21 @@ public class RotateCube : MonoBehaviour
             if (!startDown)
             {
                 startDown=true;
-                axisOne = new Vector3(cameraVector.position.x - cameraPos.position.x, cameraVector.position.y - cameraPos.position.y, cameraVector.position.z - cameraPos.position.z);//получить вектор исходящий из камеры
+                /*axisOne = new Vector3(cameraVector.position.x - cameraPos.position.x, cameraVector.position.y - cameraPos.position.y, cameraVector.position.z - cameraPos.position.z);//получить вектор исходящий из камеры
                 axisTwo = axisOne;//аналогично второму вектору
                 axisOne = new Vector3(axisOne.x, -axisOne.z, axisOne.y);// с помощью ЛИНАЛА находим новый вектор, вокруг которого будет вращаться объект
                 axisTwo = new Vector3( -axisTwo.z, axisTwo.y, axisTwo.x);// с помощью ЛИНАЛА находим новый другой вектор, вокруг которого будет вращаться объект@
+                */
+                axisOne = new Vector3(cameraVector.position.x - cameraPos.position.x, cameraVector.position.y - cameraPos.position.y, cameraVector.position.z - cameraPos.position.z);//получить вектор исходящий из камеры
+                axisTwo = axisOne;//аналогично второму вектору
+                axisOne = new Vector3(axisOne.z, axisOne.y, -axisOne.x);// с помощью ЛИНАЛА находим новый вектор, вокруг которого будет вращаться объект
+                axisTwo = new Vector3(axisOne.y, -axisOne.x, axisOne.z);// с помощью ЛИНАЛА находим новый другой вектор, вокруг которого будет вращаться объект
 
             }
             foreach (Transform targetLook in targetsLooks)
             {
-                            targetLook.RotateAround(targetLook.transform.position, axisOne, Input.GetAxis("Horizontal") * speedRotate);//вращать вокруг координат вращения, в зависимости от разницы текущего и стартового положения
-                            targetLook.RotateAround(targetLook.transform.position, -axisTwo, Input.GetAxis("Vertical")* speedRotate);
+                            targetLook.RotateAround(targetLook.transform.position, axisTwo, Input.GetAxis("Horizontal") * speedRotate);//вращать вокруг координат вращения, в зависимости от разницы текущего и стартового положения
+                            targetLook.RotateAround(targetLook.transform.position, axisOne, Input.GetAxis("Vertical")* speedRotate);
             }
         }
 
