@@ -63,6 +63,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BetterPortal\Scripts\Core\CameraUtility.cs" />
+    <Compile Include="Assets\BetterPortal\Scripts\Core\MainCamera.cs" />
+    <Compile Include="Assets\BetterPortal\Scripts\Core\Portal.cs" />
+    <Compile Include="Assets\BetterPortal\Scripts\Core\PortalTraveller.cs" />
+    <Compile Include="Assets\BetterPortal\Scripts\Demo\Car.cs" />
+    <Compile Include="Assets\BetterPortal\Scripts\Demo\CloudBehaviorTest.cs" />
+    <Compile Include="Assets\BetterPortal\Scripts\Demo\CloudCoreTest.cs" />
+    <Compile Include="Assets\BetterPortal\Scripts\Demo\CloudTest.cs" />
+    <Compile Include="Assets\BetterPortal\Scripts\Demo\FPSController.cs" />
+    <Compile Include="Assets\BetterPortal\Scripts\Demo\PortalPhysicsObject.cs" />
+    <Compile Include="Assets\BetterPortal\Scripts\Demo\Spawner.cs" />
     <Compile Include="Assets\HTC.UnityPlugin\ColliderEvent\ColliderEventCaster.cs" />
     <Compile Include="Assets\HTC.UnityPlugin\ColliderEvent\ColliderEventData.cs" />
     <Compile Include="Assets\HTC.UnityPlugin\ColliderEvent\ColliderEventInterfaces.cs" />
@@ -212,8 +223,14 @@
     <Compile Include="Assets\Script\Rotation.cs" />
     <Compile Include="Assets\Script\Shooting.cs" />
     <Compile Include="Assets\Script\SwitchesCameras.cs" />
+    <None Include="Assets\BetterPortal\Scripts\Core\Shaders\PortalRight.shader" />
+    <None Include="Assets\BetterPortal\Scripts\Core\Shaders\PortalLeft.shader" />
     <None Include="Assets\HTC.UnityPlugin\ViveInputUtility\changelog.txt" />
     <None Include="Assets\Material\CameraMap\ScreenCutoutShader.shader" />
+    <None Include="Assets\BetterPortal\Scripts\Core\Shaders\Slice.shader" />
+    <None Include="Assets\BetterPortal\Models\Car\License.txt" />
+    <None Include="Assets\BetterPortal\Scripts\Demo\Shaders\CloudTest.shader" />
+    <None Include="Assets\BetterPortal\Scripts\Demo\Shaders\SkyDome.shader" />
     <None Include="Assets\HTC.UnityPlugin\ViveInputUtility\Resources\Unlit-AlphaWithFade.shader" />
     <Reference Include="UnityEngine">
       <HintPath>D:/UnityProject/2019.4.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
