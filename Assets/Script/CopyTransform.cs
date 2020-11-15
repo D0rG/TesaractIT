@@ -5,7 +5,7 @@ using UnityEngine;
 public class CopyTransform : MonoBehaviour
 {
     public Transform[] clones;
-    Vector3[] offsets;
+    public Vector3[] offsets;
 
     // Start is called before the first frame update
     void Start()

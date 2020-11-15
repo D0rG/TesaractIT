@@ -11,13 +11,15 @@ namespace HTC.UnityPlugin.Vive
         public const float MIN_FOLLOWING_DURATION = 0.02f;
         public const float DEFAULT_FOLLOWING_DURATION = 0.04f;
         public const float MAX_FOLLOWING_DURATION = 0.5f;
-
+        
         public interface IGrabber
         {
-            RigidPose grabberOrigin { get; }
-            RigidPose grabOffset { get; }
-        }
+            RigidPose grabberOrigin { get;  }
+            RigidPose grabOffset { get; set; }
 
+           
+        }
+        public Vector3 offsetGrabberOrigin=Vector3.zero;
         private struct PoseSample
         {
             public float time;
@@ -34,7 +36,7 @@ namespace HTC.UnityPlugin.Vive
         public virtual float followingDuration { get { return DEFAULT_FOLLOWING_DURATION; } set { } }
         public virtual bool overrideMaxAngularVelocity { get { return true; } set { } }
 
-        public TGrabber currentGrabber { get; private set; }
+        public TGrabber currentGrabber { get;  set; }
         public bool isGrabbed { get { return currentGrabber != null; } }
         public Rigidbody grabRigidbody { get; set; }
 
@@ -67,6 +69,7 @@ namespace HTC.UnityPlugin.Vive
             {
                 m_afterGrabberGrabbed();
             }
+            offsetGrabberOrigin = Vector3.zero;
 
             return true;
         }
@@ -141,19 +144,34 @@ namespace HTC.UnityPlugin.Vive
                 }
             }
         }
+        public void Teleport(Vector3 offset)
+        {
 
+            var i = currentGrabber;
+            i.grabOffset = new RigidPose(i.grabOffset.pos+offset,i.grabOffset.rot);
+            currentGrabber = i;
+        }
         protected void OnGrabRigidbody()
         {
-            var targetPose = currentGrabber.grabberOrigin * currentGrabber.grabOffset;
+            var targetPose = (currentGrabber.grabberOrigin + offsetGrabberOrigin) * currentGrabber.grabOffset;
             ModifyPose(ref targetPose, null);
 
             RigidPose.SetRigidbodyVelocity(grabRigidbody, grabRigidbody.position, targetPose.pos, followingDuration);
             RigidPose.SetRigidbodyAngularVelocity(grabRigidbody, grabRigidbody.rotation, targetPose.rot, followingDuration, overrideMaxAngularVelocity);
         }
+        protected void OnGrabRigidbody(RigidPose offset)
+        {
 
+            var targetPose = currentGrabber.grabberOrigin * currentGrabber.grabOffset;
+
+            Debug.Log("OnGrab"+currentGrabber.grabberOrigin.pos + currentGrabber.grabOffset.pos + targetPose.pos);
+            offsetGrabberOrigin = offsetGrabberOrigin+ offset.pos ;
+            //currentGrabber.grabOffset = offset;
+            OnGrabRigidbody();
+        }
         protected virtual void OnGrabTransform()
         {
-            var targetPose = currentGrabber.grabberOrigin * currentGrabber.grabOffset;
+            var targetPose = (currentGrabber.grabberOrigin+offsetGrabberOrigin) * currentGrabber.grabOffset;
             ModifyPose(ref targetPose, null);
 
             if (grabRigidbody != null)
@@ -164,6 +182,15 @@ namespace HTC.UnityPlugin.Vive
 
             transform.position = targetPose.pos;
             transform.rotation = targetPose.rot;
+        }
+        protected virtual void OnGrabTransform(RigidPose offset)
+        {
+            var targetPose = currentGrabber.grabberOrigin * currentGrabber.grabOffset;
+
+            Debug.Log("OnTrans" + currentGrabber.grabberOrigin.pos + currentGrabber.grabOffset.pos+targetPose.pos);
+            offsetGrabberOrigin = offsetGrabberOrigin+ offset.pos ; 
+            //currentGrabber.grabOffset = offset;
+            OnGrabTransform();
         }
 
         protected void RecordLatestPosesForDrop(float currentTime, float recordLength)
