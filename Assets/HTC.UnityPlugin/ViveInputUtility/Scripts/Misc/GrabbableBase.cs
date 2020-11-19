@@ -164,7 +164,7 @@ namespace HTC.UnityPlugin.Vive
 
             var targetPose = currentGrabber.grabberOrigin * currentGrabber.grabOffset;
 
-            Debug.Log("OnGrab"+currentGrabber.grabberOrigin.pos + currentGrabber.grabOffset.pos + targetPose.pos);
+           // Debug.Log("OnGrab"+currentGrabber.grabberOrigin.pos + currentGrabber.grabOffset.pos + targetPose.pos);
             offsetGrabberOrigin = offsetGrabberOrigin+ offset.pos ;
             //currentGrabber.grabOffset = offset;
             OnGrabRigidbody();

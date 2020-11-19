@@ -25,8 +25,10 @@ public class PortalTraveller : MonoBehaviour {
                 gameObject.GetComponent<BasicGrabbable>().isTeleport = true;
             }
             //Debug.Log("=null");
+            //transform.parent = toPortal.parent.parent;
             transform.position = pos;
             transform.rotation = rot;
+            
         }
     }
 
@@ -58,6 +60,7 @@ public class PortalTraveller : MonoBehaviour {
     public void SetSliceOffsetDst (float dst, bool clone) {
         for (int i = 0; i < originalMaterials.Length; i++) {
             if (clone) {
+                
                 cloneMaterials[i].SetFloat ("sliceOffsetDst", dst);
             } else {
                 originalMaterials[i].SetFloat ("sliceOffsetDst", dst);

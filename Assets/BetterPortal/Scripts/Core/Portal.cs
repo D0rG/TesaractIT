@@ -276,7 +276,7 @@ public class Portal : MonoBehaviour {
     }
 
     void OnTravellerEnterPortal (PortalTraveller traveller) {
-        if (!trackedTravellers.Contains (traveller)) {
+        if ((!trackedTravellers.Contains (traveller)) &&((traveller.graphicsObject==null))||(traveller.graphicsObject.activeSelf)) {
             traveller.EnterPortalThreshold ();
             traveller.previousOffsetFromPortal = traveller.transform.position - transform.position;
             trackedTravellers.Add (traveller);
@@ -284,16 +284,22 @@ public class Portal : MonoBehaviour {
     }
 
     void OnTriggerEnter (Collider other) {
-        Debug.Log("other" + other.gameObject.name);
+        
         var traveller = other.GetComponent<PortalTraveller> ();
         if (traveller) {
             OnTravellerEnterPortal (traveller);
         }
-        CopyTransform joyStick= other.gameObject.GetComponentInParent<CopyTransform>();
-        if (joyStick!= null)
+        
+        CopeJoyStick joyStick = other.gameObject.GetComponentInParent<CopeJoyStick>();
+        if (joyStick != null)
         {
-            if (joyStick.clones.Length > 0) joyStick.clones[0].gameObject.SetActive(true);
-            if (joyStick.clones.Length > 0) joyStick.offsets[0] = linkedPortal.gameObject.transform.position - transform.position;
+            if (!joyStick.clones.ContainsKey(gameObject.name))
+            {
+                Debug.Log("Add "+gameObject.name);
+                GameObject clone = Instantiate(joyStick.gameObject, linkedPortal.gameObject.transform.position - transform.position + joyStick.transform.position, joyStick.transform.rotation);
+                Destroy( clone.GetComponent<CopeJoyStick>());
+                joyStick.clones.Add(gameObject.name, new CopeJoyStick.Clone(clone.transform, linkedPortal.gameObject.transform.position - transform.position));
+            }
         }
     }
 
@@ -303,10 +309,17 @@ public class Portal : MonoBehaviour {
             
             /*if (traveller.readyToTeleport)*/removeTravellFromList(traveller);
         }
-        CopyTransform joyStick = other.gameObject.GetComponentInParent<CopyTransform>();
+        CopeJoyStick joyStick = other.gameObject.GetComponentInParent<CopeJoyStick>();
         if (joyStick != null)
         {
-            if(joyStick.clones.Length >0) joyStick.clones[0].gameObject.SetActive(false);
+            if (joyStick.clones.ContainsKey(gameObject.name))
+            {
+                Debug.Log("Delete " + gameObject.name);
+                CopeJoyStick.Clone clone;
+                joyStick.clones.TryGetValue(gameObject.name,out clone);
+                Destroy(clone.transf.gameObject);
+                joyStick.clones.Remove(gameObject.name);
+            }
         }
     }
 

@@ -214,6 +214,7 @@
     <Compile Include="Assets\HTC.UnityPlugin\ViveInputUtility\Scripts\ViveRole\ViveRoleSetter.cs" />
     <Compile Include="Assets\Script\CameraInfo.cs" />
     <Compile Include="Assets\Script\ChangeMaterial.cs" />
+    <Compile Include="Assets\Script\CopeJoyStick.cs" />
     <Compile Include="Assets\Script\CopyTransform.cs" />
     <Compile Include="Assets\Script\Lazer.cs" />
     <Compile Include="Assets\Script\LazerControll.cs" />
