@@ -290,7 +290,7 @@ public class Portal : MonoBehaviour {
     }
 
     void OnTravellerEnterPortal (PortalTraveller traveller) {
-        if ((!differentEyePortal.trackedTravellers.Contains(traveller)) && (!trackedTravellers.Contains (traveller)) &&((traveller.graphicsObject==null)||(traveller.graphicsObject.activeSelf))) {
+        if ((!differentEyePortal.trackedTravellers.Contains(traveller)) && (!trackedTravellers.Contains (traveller)) ) {
             traveller.EnterPortalThreshold ();
             traveller.previousOffsetFromPortal = traveller.transform.position - transform.position;
             trackedTravellers.Add (traveller);
@@ -301,7 +301,7 @@ public class Portal : MonoBehaviour {
     void OnTriggerEnter (Collider other) {
         
         var traveller = other.GetComponent<PortalTraveller> ();
-        if (traveller) {
+        if ((traveller)&& ((traveller.graphicsClone == null) || (!traveller.graphicsClone.activeSelf))) {
             OnTravellerEnterPortal (traveller);
         }
         
