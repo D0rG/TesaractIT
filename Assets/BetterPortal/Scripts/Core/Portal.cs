@@ -7,6 +7,7 @@ public class Portal : MonoBehaviour {
 
     [Header ("Main Settings")]
     public Portal linkedPortal;
+    public Portal differentEyePortal;
     public MeshRenderer screen;
     public int recursionLimit = 5;
 
@@ -38,20 +39,33 @@ public class Portal : MonoBehaviour {
     void HandleTravellers () {
 
         for (int i = 0; i < trackedTravellers.Count; i++) {
+            
             PortalTraveller traveller = trackedTravellers[i];
             Transform travellerT = traveller.transform;
             var m = linkedPortal.transform.localToWorldMatrix * transform.worldToLocalMatrix * travellerT.localToWorldMatrix;
 
-            Vector3 offsetFromPortal = travellerT.position - transform.position;
+           Vector3 offsetFromPortal = travellerT.position - transform.position;
             int portalSide = System.Math.Sign (Vector3.Dot (offsetFromPortal, transform.forward));
             int portalSideOld = System.Math.Sign (Vector3.Dot (traveller.previousOffsetFromPortal, transform.forward));
             // Teleport the traveller if it has crossed from one side of the portal to the other
             if ((portalSide != portalSideOld)/*&&(traveller.readyToTeleport)*/) {
+                for (int j=0; j < trackedTravellers.Count; j++)
+                {
+                    Debug.Log(trackedTravellers[j].gameObject.name+"  "+j);
+                }
+               /* Debug.Log("Linked " + linkedPortal.transform.localToWorldMatrix.GetColumn(0) + " " + linkedPortal.transform.localToWorldMatrix.GetColumn(1) + " " + linkedPortal.transform.localToWorldMatrix.GetColumn(2) + " " + linkedPortal.transform.localToWorldMatrix.GetColumn(3));
+                Debug.Log("portal world " + transform.localToWorldMatrix.GetColumn(0) + " " + transform.localToWorldMatrix.GetColumn(1) + " " + transform.localToWorldMatrix.GetColumn(2) + " " + transform.localToWorldMatrix.GetColumn(3));
+                Debug.Log("portal " + transform.worldToLocalMatrix.GetColumn(0) + " " + transform.worldToLocalMatrix.GetColumn(1) + " " + transform.worldToLocalMatrix.GetColumn(2) + " " + transform.worldToLocalMatrix.GetColumn(3));
+
+                Debug.Log("traveller " + travellerT.transform.localToWorldMatrix.GetColumn(0) + " " + travellerT.transform.localToWorldMatrix.GetColumn(1) + " " + travellerT.transform.localToWorldMatrix.GetColumn(2) + " " + travellerT.transform.localToWorldMatrix.GetColumn(3));
+                Debug.Log("all " + m.GetColumn(0) + " " + m.GetColumn(1) + " " + m.GetColumn(2) + " " + m.GetColumn(3));
+                Debug.Log("Matrix" + m.GetColumn(3));*/
                 var positionOld = travellerT.position;
                 var rotOld = travellerT.rotation;
                 
-                traveller.Teleport (transform, linkedPortal.transform, m.GetColumn (3), m.rotation);
+                 traveller.Teleport (transform, linkedPortal.transform, m.GetColumn (3), m.rotation);
                 traveller.graphicsClone.transform.SetPositionAndRotation (positionOld, rotOld);
+                
                 // Can't rely on OnTriggerEnter/Exit to be called next frame since it depends on when FixedUpdate runs
                 linkedPortal.OnTravellerEnterPortal (traveller);
                 trackedTravellers.RemoveAt (i);
@@ -276,10 +290,11 @@ public class Portal : MonoBehaviour {
     }
 
     void OnTravellerEnterPortal (PortalTraveller traveller) {
-        if ((!trackedTravellers.Contains (traveller)) &&((traveller.graphicsObject==null))||(traveller.graphicsObject.activeSelf)) {
+        if ((!differentEyePortal.trackedTravellers.Contains(traveller)) && (!trackedTravellers.Contains (traveller)) &&((traveller.graphicsObject==null)||(traveller.graphicsObject.activeSelf))) {
             traveller.EnterPortalThreshold ();
             traveller.previousOffsetFromPortal = traveller.transform.position - transform.position;
             trackedTravellers.Add (traveller);
+            Debug.Log("Add " + traveller.gameObject.name + " to " + gameObject.name);
         }
     }
 
@@ -295,7 +310,7 @@ public class Portal : MonoBehaviour {
         {
             if (!joyStick.clones.ContainsKey(gameObject.name))
             {
-                Debug.Log("Add "+gameObject.name);
+               // Debug.Log("Add "+gameObject.name);
                 GameObject clone = Instantiate(joyStick.gameObject, linkedPortal.gameObject.transform.position - transform.position + joyStick.transform.position, joyStick.transform.rotation);
                 Destroy( clone.GetComponent<CopeJoyStick>());
                 joyStick.clones.Add(gameObject.name, new CopeJoyStick.Clone(clone.transform, linkedPortal.gameObject.transform.position - transform.position));
@@ -314,7 +329,7 @@ public class Portal : MonoBehaviour {
         {
             if (joyStick.clones.ContainsKey(gameObject.name))
             {
-                Debug.Log("Delete " + gameObject.name);
+                //Debug.Log("Delete " + gameObject.name);
                 CopeJoyStick.Clone clone;
                 joyStick.clones.TryGetValue(gameObject.name,out clone);
                 Destroy(clone.transf.gameObject);

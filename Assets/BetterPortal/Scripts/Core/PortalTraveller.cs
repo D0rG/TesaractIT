@@ -17,7 +17,7 @@ public class PortalTraveller : MonoBehaviour {
         {
             if (gameObject.GetComponent<BasicGrabbable>() != null)
             {
-                Debug.Log("!=null"+ pos+ transform.position);
+               
                 
                 
                 gameObject.GetComponent<BasicGrabbable>().pos = pos-transform.position;
@@ -26,15 +26,16 @@ public class PortalTraveller : MonoBehaviour {
             }
             //Debug.Log("=null");
             //transform.parent = toPortal.parent.parent;
+            Debug.Log("Teleport " + transform.position  + " to " + pos);
             transform.position = pos;
             transform.rotation = rot;
-            
+             
         }
     }
 
     // Called when first touches portal
     public virtual void EnterPortalThreshold () {
-        Debug.Log("enter"+ gameObject.name);
+        //Debug.Log("enter"+ gameObject.name);
         if (graphicsClone == null) {
             Debug.Log("==null" + gameObject.name);
             graphicsClone = Instantiate (graphicsObject);
