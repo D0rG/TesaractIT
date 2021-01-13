@@ -27,4 +27,8 @@ public class CopyTransform : MonoBehaviour
             clones[i].localScale = transform.localScale;
         }
     }
+    public void OnPreCull()
+    {
+        
+    }
 }
