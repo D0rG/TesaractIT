@@ -11,6 +11,7 @@ public class PortalTraveller : MonoBehaviour {
     public Material[] originalMaterials { get; set; }
     public Material[] cloneMaterials { get; set; }
 
+    public int deepParentScript = 0;// 0- телепортируем сам объект,1 - телепортируем родителя, 2 - телепортируем родителя родителя и т.д
     //public bool readyToTeleport = true;
     public virtual void Teleport (Transform fromPortal, Transform toPortal, Vector3 pos, Quaternion rot) {
         //if (readyToTeleport)
@@ -37,7 +38,6 @@ public class PortalTraveller : MonoBehaviour {
     public virtual void EnterPortalThreshold () {
         //Debug.Log("enter"+ gameObject.name);
         if (graphicsClone == null) {
-            Debug.Log("==null" + gameObject.name);
             graphicsClone = Instantiate (graphicsObject);
             if (graphicsClone.GetComponent<RenderModelHook>() != null) GameObject.Destroy(graphicsClone.GetComponent<RenderModelHook>());
             graphicsClone.transform.parent = graphicsObject.transform.parent;

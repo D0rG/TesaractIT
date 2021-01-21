@@ -42,7 +42,7 @@ public class Portal : MonoBehaviour {
             
             PortalTraveller traveller = trackedTravellers[i];
             Transform travellerT = traveller.transform;
-            var m = linkedPortal.transform.localToWorldMatrix * transform.worldToLocalMatrix * travellerT.localToWorldMatrix;
+            var m = linkedPortal.transform.localToWorldMatrix * transform.worldToLocalMatrix * getTransfParent(travellerT, traveller.deepParentScript).localToWorldMatrix;
 
            Vector3 offsetFromPortal = travellerT.position - transform.position;
             int portalSide = System.Math.Sign (Vector3.Dot (offsetFromPortal, transform.forward));
@@ -60,11 +60,12 @@ public class Portal : MonoBehaviour {
                 Debug.Log("traveller " + travellerT.transform.localToWorldMatrix.GetColumn(0) + " " + travellerT.transform.localToWorldMatrix.GetColumn(1) + " " + travellerT.transform.localToWorldMatrix.GetColumn(2) + " " + travellerT.transform.localToWorldMatrix.GetColumn(3));
                 Debug.Log("all " + m.GetColumn(0) + " " + m.GetColumn(1) + " " + m.GetColumn(2) + " " + m.GetColumn(3));
                 Debug.Log("Matrix" + m.GetColumn(3));*/
-                var positionOld = travellerT.position;
-                var rotOld = travellerT.rotation;
-                
-                 traveller.Teleport (transform, linkedPortal.transform, m.GetColumn (3), m.rotation);
-                traveller.graphicsClone.transform.SetPositionAndRotation (positionOld, rotOld);
+                var positionOld = getTransfParent(travellerT, traveller.deepParentScript).position;
+                var rotOld = getTransfParent(travellerT, traveller.deepParentScript).rotation;
+                PortalTraveller newtraveller = traveller;
+                if (getTransfParent(travellerT, traveller.deepParentScript).GetComponent<PortalTraveller>() != null) newtraveller = getTransfParent(travellerT, traveller.deepParentScript).GetComponent<PortalTraveller>();
+                newtraveller.Teleport (transform, linkedPortal.transform, m.GetColumn (3), m.rotation);
+                newtraveller.graphicsClone.transform.SetPositionAndRotation (positionOld, rotOld);
                 
                 // Can't rely on OnTriggerEnter/Exit to be called next frame since it depends on when FixedUpdate runs
                 linkedPortal.OnTravellerEnterPortal (traveller);
@@ -304,7 +305,7 @@ public class Portal : MonoBehaviour {
         if ((traveller)&& ((traveller.graphicsClone == null) || (!traveller.graphicsClone.activeSelf))) {
             OnTravellerEnterPortal (traveller);
         }
-        
+        //  могу вызвать одителя
         CopeJoyStick joyStick = other.gameObject.GetComponentInParent<CopeJoyStick>();
         if (joyStick != null)
         {
@@ -364,6 +365,19 @@ public class Portal : MonoBehaviour {
     void OnValidate () {
         if (linkedPortal != null) {
             linkedPortal.linkedPortal = this;
+        }
+    }
+
+
+    // мои скрипты
+
+    public  Transform getTransfParent (Transform travl, int deep)
+    {
+        if (deep == 0) return travl;
+        else
+        {
+            Transform parent=travl.parent;
+            return getTransfParent(parent, deep - 1);
         }
     }
 }
