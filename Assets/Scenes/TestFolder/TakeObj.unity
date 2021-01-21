@@ -1831,6 +1831,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2003834906}
     m_Modifications:
+    - target: {fileID: 4802107247068911906, guid: 4fd07d7d0b3312b4c813513229c294b5,
+        type: 3}
+      propertyPath: m_TargetEye
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802107247068911906, guid: 4fd07d7d0b3312b4c813513229c294b5,
+        type: 3}
+      propertyPath: m_TargetDisplay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802107247559883033, guid: 4fd07d7d0b3312b4c813513229c294b5,
+        type: 3}
+      propertyPath: m_TargetEye
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802107247559883033, guid: 4fd07d7d0b3312b4c813513229c294b5,
+        type: 3}
+      propertyPath: m_TargetDisplay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5420165646528854325, guid: 4fd07d7d0b3312b4c813513229c294b5,
         type: 3}
       propertyPath: m_Name
@@ -5196,7 +5216,7 @@ PrefabInstance:
     - target: {fileID: 5420165646528854325, guid: 4fd07d7d0b3312b4c813513229c294b5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5997164782722864659, guid: 4fd07d7d0b3312b4c813513229c294b5,
         type: 3}
@@ -7093,7 +7113,7 @@ BoxCollider:
   m_GameObject: {fileID: 3650191010029722117}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 11.020561, y: 9.032271, z: 1.6664886}
   m_Center: {x: 0.5074767, y: -0.4798375, z: 4.945372}
@@ -7104,7 +7124,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3650191010029722117}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b657e4a5467d69e4ab805cfe5fb6785e, type: 3}
   m_Name: 
@@ -7382,7 +7402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &759503536
 Transform:
   m_ObjectHideFlags: 0
@@ -11434,7 +11454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1169991862
 Transform:
   m_ObjectHideFlags: 0
@@ -11873,10 +11893,20 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4802107247068911906, guid: 4fd07d7d0b3312b4c813513229c294b5,
+        type: 3}
+      propertyPath: m_TargetDisplay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4802107247559883033, guid: 4fd07d7d0b3312b4c813513229c294b5,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802107247559883033, guid: 4fd07d7d0b3312b4c813513229c294b5,
+        type: 3}
+      propertyPath: m_TargetDisplay
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5420165646528854325, guid: 4fd07d7d0b3312b4c813513229c294b5,
         type: 3}
@@ -11886,7 +11916,7 @@ PrefabInstance:
     - target: {fileID: 5420165646528854325, guid: 4fd07d7d0b3312b4c813513229c294b5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5997164782722864659, guid: 4fd07d7d0b3312b4c813513229c294b5,
         type: 3}
@@ -14202,7 +14232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1429154877
 Transform:
   m_ObjectHideFlags: 0
@@ -19679,7 +19709,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 2
-  m_HDR: 0
+  m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -20134,7 +20164,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 1
-  m_HDR: 0
+  m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -21187,6 +21217,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3650191010771087412}
+  - component: {fileID: 3650191010771087415}
+  - component: {fileID: 3650191010771087414}
   m_Layer: 0
   m_Name: Hand1
   m_TagString: Untagged
@@ -21194,6 +21226,72 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3650191010771087414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3650191010771087413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ccca6ca7672d1429415ee4d7fefd88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialSpeed: 1
+  increaseSpeed: 0
+  allowMovement: 1
+  allowRotation: 1
+  forwardButton: 119
+  backwardButton: 115
+  rightButton: 100
+  leftButton: 97
+  cursorSensitivity: 0
+  cursorToggleAllowed: 1
+  cursorToggleButton: 27
+--- !u!20 &3650191010771087415
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3650191010771087413}
+  m_Enabled: 0
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!4 &5006512735887488886
 Transform:
   m_ObjectHideFlags: 0
