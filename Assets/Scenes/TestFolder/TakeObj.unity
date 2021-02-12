@@ -21352,6 +21352,7 @@ GameObject:
   - component: {fileID: 3650191010771087420}
   - component: {fileID: 3650191010771087416}
   - component: {fileID: 3650191010771087419}
+  - component: {fileID: 3650191010771087421}
   m_Layer: 0
   m_Name: Hand1
   m_TagString: Untagged
@@ -21495,6 +21496,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 3650191010771087419}
   cam: {fileID: 3650191010029722116}
+--- !u!114 &3650191010771087421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3650191010771087413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dea2187e2c4218d49b7433b6b986a5ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5006512735887488886
 Transform:
   m_ObjectHideFlags: 0

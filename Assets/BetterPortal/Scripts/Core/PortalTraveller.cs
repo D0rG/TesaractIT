@@ -19,8 +19,6 @@ public class PortalTraveller : MonoBehaviour {
             if (gameObject.GetComponent<BasicGrabbable>() != null)
             {
                
-                
-                
                 gameObject.GetComponent<BasicGrabbable>().pos = pos-transform.position;
                 gameObject.GetComponent<BasicGrabbable>().rot = rot;
                 gameObject.GetComponent<BasicGrabbable>().isTeleport = true;
