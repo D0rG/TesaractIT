@@ -23,12 +23,17 @@ public class PortalTraveller : MonoBehaviour {
                 gameObject.GetComponent<BasicGrabbable>().rot = rot;
                 gameObject.GetComponent<BasicGrabbable>().isTeleport = true;
             }
+            if (gameObject.GetComponent<SetNameId>() != null)
+            {
+                gameObject.GetComponent<SetNameId>().Teleport(fromPortal.transform.position, toPortal.transform.position, rot);
+
+            }
             //Debug.Log("=null");
             //transform.parent = toPortal.parent.parent;
-            Debug.Log("Teleport " + transform.position  + " to " + pos);
-            transform.position = pos;
+           // Debug.Log("Teleport " + transform.position  + " to " + pos);
+           transform.position = pos;
             transform.rotation = rot;
-             
+            
         }
     }
 

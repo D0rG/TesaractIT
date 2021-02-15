@@ -116,6 +116,7 @@ namespace HTC.UnityPlugin.Vive
         //public Transform newTransform;
         public Vector3 pos;
         public Quaternion rot;
+        public ColliderButtonEventData lastJoy;
 
         [Obsolete("Use IsSecondaryGrabButtonOn and SetSecondaryGrabButton instead")]
         public ColliderButtonEventData.InputButton grabButton
@@ -217,6 +218,7 @@ namespace HTC.UnityPlugin.Vive
 
             if (m_eventGrabberSet == null) { m_eventGrabberSet = new IndexedTable<ColliderButtonEventData, Grabber>(); }
             m_eventGrabberSet.Add(eventData, grabber);
+            lastJoy = eventData;
 
             AddGrabber(grabber);
             //if (gameObject.GetComponent<PortalTraveller>() != null) gameObject.GetComponent<PortalTraveller>().readyToTeleport = false;
@@ -225,7 +227,7 @@ namespace HTC.UnityPlugin.Vive
 
         public virtual void OnColliderEventDragFixedUpdate(ColliderButtonEventData eventData)
         {
-           
+            Debug.Log(isGrabbed +" "+ moveByVelocity + " " + (currentGrabber.eventData == eventData)); 
             if (isGrabbed && moveByVelocity && currentGrabber.eventData == eventData)
             {
                 if (isTeleport)
@@ -244,7 +246,7 @@ namespace HTC.UnityPlugin.Vive
 
         public virtual void OnColliderEventDragUpdate(ColliderButtonEventData eventData)
         {
-            
+            Debug.Log(isGrabbed + " " + !moveByVelocity + " " + (currentGrabber.eventData == eventData));
             if (isGrabbed && !moveByVelocity && currentGrabber.eventData == eventData)
             {
                 RecordLatestPosesForDrop(Time.time, 0.05f);

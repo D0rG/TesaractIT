@@ -295,7 +295,7 @@ public class Portal : MonoBehaviour {
             traveller.EnterPortalThreshold ();
             traveller.previousOffsetFromPortal = traveller.transform.position - transform.position;
             trackedTravellers.Add (traveller);
-            Debug.Log("Add " + traveller.gameObject.name + " to " + gameObject.name);
+            //Debug.Log("Add " + traveller.gameObject.name + " to " + gameObject.name);
         }
     }
 
