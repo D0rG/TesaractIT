@@ -3245,7 +3245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485106567}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0, z: 100}
+  m_LocalPosition: {x: 0.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2124405751}
@@ -3323,7 +3323,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -6286,7 +6286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 844623221}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Kub right
   m_TagString: Tesaract
   m_Icon: {fileID: 0}
@@ -6301,7 +6301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844623219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.269989, y: 0.94, z: 100.94}
+  m_LocalPosition: {x: 1.269989, y: 0.94, z: 0.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1344948229}
@@ -7439,7 +7439,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 567
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -9391,6 +9391,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: kub
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 28414a6090227664c870a74efd2f9474,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28414a6090227664c870a74efd2f9474, type: 3}
 --- !u!1 &1140263957
@@ -9496,7 +9501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1169991862}
   - component: {fileID: 1169991863}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Kub
   m_TagString: Tesaract
   m_Icon: {fileID: 0}
@@ -10684,6 +10689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: kub
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 28414a6090227664c870a74efd2f9474,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28414a6090227664c870a74efd2f9474, type: 3}

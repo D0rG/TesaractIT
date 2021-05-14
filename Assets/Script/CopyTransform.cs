@@ -5,7 +5,7 @@ using UnityEngine;
 public class CopyTransform : MonoBehaviour
 {
     public Transform[] clones;
-    Vector3[] offsets;
+    public Vector3[] offsets;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,7 @@ public class CopyTransform : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         for (int i = 0; i < clones.Length; i++)
         {
@@ -26,5 +26,9 @@ public class CopyTransform : MonoBehaviour
             clones[i].rotation = transform.rotation;
             clones[i].localScale = transform.localScale;
         }
+    }
+    public void OnPreCull()
+    {
+        
     }
 }

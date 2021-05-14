@@ -111,6 +111,13 @@ namespace HTC.UnityPlugin.Vive
 
         public uint secondaryGrabButton { get { return m_secondaryGrabButton; } set { m_secondaryGrabButton = value; } }
 
+        public bool isTeleport = false;
+
+        //public Transform newTransform;
+        public Vector3 pos;
+        public Quaternion rot;
+        public ColliderButtonEventData lastJoy;
+
         [Obsolete("Use IsSecondaryGrabButtonOn and SetSecondaryGrabButton instead")]
         public ColliderButtonEventData.InputButton grabButton
         {
@@ -211,29 +218,58 @@ namespace HTC.UnityPlugin.Vive
 
             if (m_eventGrabberSet == null) { m_eventGrabberSet = new IndexedTable<ColliderButtonEventData, Grabber>(); }
             m_eventGrabberSet.Add(eventData, grabber);
+            lastJoy = eventData;
 
             AddGrabber(grabber);
+            //if (gameObject.GetComponent<PortalTraveller>() != null) gameObject.GetComponent<PortalTraveller>().readyToTeleport = false;
         }
+       
 
         public virtual void OnColliderEventDragFixedUpdate(ColliderButtonEventData eventData)
         {
+            Debug.Log(isGrabbed +" "+ moveByVelocity + " " + (currentGrabber.eventData == eventData)); 
             if (isGrabbed && moveByVelocity && currentGrabber.eventData == eventData)
             {
-                OnGrabRigidbody();
+                if (isTeleport)
+                {
+                    isTeleport = false;
+
+                    OnGrabRigidbody(new RigidPose(pos, rot));
+                }
+                else OnGrabRigidbody();
+            }
+            else
+            {
+                if (isTeleport) isTeleport = false;
             }
         }
 
         public virtual void OnColliderEventDragUpdate(ColliderButtonEventData eventData)
         {
+            Debug.Log(isGrabbed + " " + !moveByVelocity + " " + (currentGrabber.eventData == eventData));
             if (isGrabbed && !moveByVelocity && currentGrabber.eventData == eventData)
             {
                 RecordLatestPosesForDrop(Time.time, 0.05f);
-                OnGrabTransform();
+                if (isTeleport)
+                {
+                    isTeleport = false;
+                    
+
+                    OnGrabTransform(new RigidPose(pos, rot));
+                }
+                else OnGrabTransform();
             }
+            else
+            {
+                if (isTeleport) isTeleport = false;
+            }
+
         }
 
         public virtual void OnColliderEventDragEnd(ColliderButtonEventData eventData)
         {
+            //if (gameObject.GetComponent<PortalTraveller>() != null) gameObject.GetComponent<PortalTraveller>().readyToTeleport = true;
+
             if (m_eventGrabberSet == null) { return; }
 
             Grabber grabber;

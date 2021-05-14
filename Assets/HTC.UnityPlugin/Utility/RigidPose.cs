@@ -88,6 +88,15 @@ namespace HTC.UnityPlugin.Utility
                 pos = a.pos + a.rot * b.pos
             };
         }
+        public static RigidPose operator +(RigidPose a, Vector3 b)
+        {
+            return new RigidPose
+            {
+                rot = a.rot,
+                pos = a.pos + b
+
+            };
+        }
 
         public void Multiply(RigidPose a, RigidPose b)
         {
